@@ -81,16 +81,21 @@ This deployment creates:
 
 cd ../packer
 packer build amazon-linux.pkr.hcl
+
 ![image](https://github.com/user-attachments/assets/a09444fd-5d07-4c88-9b7f-a66886256abc)
 ![image](https://github.com/user-attachments/assets/94d53e7f-09e2-48b5-bfe8-9e1557c57d8a)
+
 
 cd ../terraform
 terraform init
 terraform apply -auto-approve
+
 ![image](https://github.com/user-attachments/assets/6d22ace9-8ad4-4cc3-9438-8a8cea2a9c9b)
 ![image](https://github.com/user-attachments/assets/4bc1d53a-81e9-4677-bce4-4ee0f5830988)
 
+
 terraform destroy
+
 ![image](https://github.com/user-attachments/assets/7e30818c-d1ec-4c79-9f62-99927aebd210)
 ![image](https://github.com/user-attachments/assets/bbe4fdfd-9a71-4d75-9013-2e829b711af1)
 
