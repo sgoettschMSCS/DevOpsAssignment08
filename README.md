@@ -45,17 +45,12 @@ export AWS_REGION="us-east-1"
    terraform init
    ```
 
-3. Plan the deployment:
+3. Apply the configuration:
    ```bash
-   terraform plan
+   terraform apply -auto-approve
    ```
 
-4. Apply the configuration:
-   ```bash
-   terraform apply
-   ```
-
-5. To destroy the infrastructure when done:
+4. To destroy the infrastructure when done:
    ```bash
    terraform destroy
    ```
@@ -74,7 +69,7 @@ This deployment creates:
 
 1. SSH to the bastion host:
    ```bash
-   ssh -i ~/.ssh/*midterm-key*.pem ec2-user@<bastion_public_ip>
+   ssh -i ~/.ssh/*.pem ec2-user@<bastion_public_ip>
    ```
 
 2. From the bastion, connect directly to any private instance:
@@ -82,8 +77,22 @@ This deployment creates:
    ssh ec2-user@<private_instance_ip>
    ```
 
-## Screenshots
+## Screenshots with inputs and expected outputs:
 
+cd ../packer
+packer build amazon-linux.pkr.hcl
+![image](https://github.com/user-attachments/assets/a09444fd-5d07-4c88-9b7f-a66886256abc)
+![image](https://github.com/user-attachments/assets/94d53e7f-09e2-48b5-bfe8-9e1557c57d8a)
+
+cd ../terraform
+terraform init
+terraform apply -auto-approve
+![image](https://github.com/user-attachments/assets/6d22ace9-8ad4-4cc3-9438-8a8cea2a9c9b)
+![image](https://github.com/user-attachments/assets/4bc1d53a-81e9-4677-bce4-4ee0f5830988)
+
+terraform destroy
+![image](https://github.com/user-attachments/assets/7e30818c-d1ec-4c79-9f62-99927aebd210)
+![image](https://github.com/user-attachments/assets/bbe4fdfd-9a71-4d75-9013-2e829b711af1)
 
 
 
