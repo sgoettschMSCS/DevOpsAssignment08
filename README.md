@@ -156,13 +156,16 @@ The playbook will output:
 ## Screenshots for Assignment 10:
 
 terraform init, plan, apply
+
 ![image](https://github.com/user-attachments/assets/3ce1973c-c4db-40e2-9ea9-dbd48e7fe5a4)
 
 ssh -i * ubuntu@*
+
 ![image](https://github.com/user-attachments/assets/daa0e050-2895-4c03-8b2f-38b3462e7785)
 
 
 ansible-playbook -i inventory.yml playbook.yml
+
 ![image](https://github.com/user-attachments/assets/0b9463b4-3d0c-412d-b62f-a6d2b20bf0e9)
 
 ![image](https://github.com/user-attachments/assets/bfbe61db-d864-481e-b9af-0c0cf2be60cb)
