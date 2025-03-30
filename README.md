@@ -137,11 +137,13 @@ The terraform configuration now provisions:
    ansible-playbook -i inventory.yml playbook.yml
    ```
 
+
 ### What the Ansible Playbook Does
 
 1. Updates and upgrades all packages on each instance
 2. Verifies and ensures Docker is installed and running on all instances 
 3. Reports disk usage for each instance
+
 
 ### Output
 
@@ -150,16 +152,22 @@ The playbook will output:
 - Docker version information
 - Disk usage details for each server
 
+
 ## Screenshots for Assignment 10:
 
 terraform init, plan, apply
-
+![image](https://github.com/user-attachments/assets/3ce1973c-c4db-40e2-9ea9-dbd48e7fe5a4)
 
 ssh -i * ubuntu@*
+![image](https://github.com/user-attachments/assets/daa0e050-2895-4c03-8b2f-38b3462e7785)
 
 
 ansible-playbook -i inventory.yml playbook.yml
+![image](https://github.com/user-attachments/assets/0b9463b4-3d0c-412d-b62f-a6d2b20bf0e9)
 
+![image](https://github.com/user-attachments/assets/bfbe61db-d864-481e-b9af-0c0cf2be60cb)
 
+![image](https://github.com/user-attachments/assets/36717609-581b-4705-815d-979d50dfa0c7)
 
+![image](https://github.com/user-attachments/assets/dd8a2261-785c-4ce8-931f-7f9e507d1568)
 
