@@ -99,6 +99,67 @@ terraform destroy
 ![image](https://github.com/user-attachments/assets/7e30818c-d1ec-4c79-9f62-99927aebd210)
 ![image](https://github.com/user-attachments/assets/bbe4fdfd-9a71-4d75-9013-2e829b711af1)
 
+## Assignment 10 - Ansible Configuration
+
+This repository has been updated with Ansible integration to manage the provisioned EC2 instances.
+
+### Infrastructure Overview
+
+The terraform configuration now provisions:
+- 3 Ubuntu EC2 instances tagged with OS:ubuntu
+- 3 Amazon Linux EC2 instances tagged with OS:amazon  
+- 1 Ansible Controller EC2 instance running Ubuntu
+
+### Deployment Steps
+
+1. Clone the repository and checkout the assignment10 branch:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   git checkout assignment10
+   ```
+
+2. Provision the infrastructure:
+   ```bash
+   cd terraform
+   terraform init
+   terraform apply -auto-approve
+   ```
+
+3. Connect to the Ansible Controller:
+   ```bash
+   ssh -i ~/.ssh/your-key.pem ubuntu@<ansible-controller-public-ip>
+   ```
+
+4. Run the Ansible playbook:
+   ```bash
+   cd ~/ansible
+   ansible-playbook -i inventory.yml playbook.yml
+   ```
+
+### What the Ansible Playbook Does
+
+1. Updates and upgrades all packages on each instance
+2. Verifies and ensures Docker is installed and running on all instances 
+3. Reports disk usage for each instance
+
+### Output
+
+The playbook will output:
+- Package update status
+- Docker version information
+- Disk usage details for each server
+
+## Screenshots for Assignment 10:
+
+terraform init, plan, apply
+
+
+ssh -i * ubuntu@*
+
+
+ansible-playbook -i inventory.yml playbook.yml
+
 
 
 

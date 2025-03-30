@@ -62,4 +62,25 @@ variable "my_ip" {
   description = "Your IP address for SSH access to bastion (format: x.x.x.x/32)"
   type        = string
   default     = "0.0.0.0/0"  # CHANGE THIS TO YOUR IP FOR SECURITY!
+}
+
+variable "aws_access_key_id" {
+  description = "AWS access key"
+  type        = string
+}
+
+variable "aws_secret_access_key" {
+  description = "AWS secret key"
+  type        = string
+}
+
+variable "aws_session_token" {
+  description = "AWS session token"
+  type        = string
+}
+
+variable "key_path" {
+  description = "Path to the SSH private key file"
+  type        = string
+  default     = "C:/A/USF/DevOps/A101/midterm-key.pem"
 } 

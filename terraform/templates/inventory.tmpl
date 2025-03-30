@@ -1,0 +1,18 @@
+all:
+  children:
+    ubuntu_servers:
+      hosts:
+%{ for index, ip in ubuntu_ips ~}
+        ubuntu${index + 1}:
+          ansible_host: ${ip}
+          ansible_user: ubuntu
+%{ endfor ~}
+    amazon_servers:
+      hosts:
+%{ for index, ip in amazon_ips ~}
+        amazon${index + 1}:
+          ansible_host: ${ip}
+          ansible_user: ec2-user
+%{ endfor ~}
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/midterm-key.pem

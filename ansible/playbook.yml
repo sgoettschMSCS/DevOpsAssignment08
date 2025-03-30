@@ -1,0 +1,84 @@
+---
+- name: Configure EC2 Instances
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    # Ubuntu tasks
+    - name: Update apt cache (Ubuntu)
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_distribution == 'Ubuntu'
+      ignore_errors: yes
+
+    - name: Upgrade packages (Ubuntu)
+      apt:
+        upgrade: dist
+      when: ansible_distribution == 'Ubuntu'
+      ignore_errors: yes
+
+    # Amazon Linux tasks
+    - name: Update yum cache (Amazon Linux)
+      yum:
+        update_cache: yes
+      when: ansible_distribution == 'Amazon'
+      ignore_errors: yes
+
+    - name: Upgrade packages (Amazon Linux)
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_distribution == 'Amazon'
+      ignore_errors: yes
+
+    # Docker verification
+    - name: Check if Docker is installed
+      command: which docker
+      register: docker_check
+      ignore_errors: yes
+      changed_when: false
+
+    # Docker installation for Ubuntu
+    - name: Install Docker (Ubuntu) if not present
+      apt:
+        name: docker.io
+        state: latest
+      when: ansible_distribution == 'Ubuntu' and docker_check.rc != 0
+      ignore_errors: yes
+
+    # Docker installation for Amazon Linux
+    - name: Install Docker (Amazon Linux) if not present
+      shell: amazon-linux-extras install docker -y
+      when: ansible_distribution == 'Amazon' and docker_check.rc != 0
+      ignore_errors: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      ignore_errors: yes
+      when: docker_check.rc != 0
+
+    - name: Get Docker version
+      command: docker --version
+      register: docker_version
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Display Docker version
+      debug:
+        msg: "Docker version: {{ docker_version.stdout }}"
+      ignore_errors: yes
+
+    # Disk usage reporting
+    - name: Get disk usage
+      command: df -h
+      register: disk_usage
+      changed_when: false
+
+    - name: Display disk usage
+      debug:
+        msg: "{{ disk_usage.stdout_lines }}" 

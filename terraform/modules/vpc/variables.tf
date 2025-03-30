@@ -21,4 +21,9 @@ variable "availability_zone" {
 variable "project_name" {
   description = "Name of the project for resource tagging"
   type        = string
+}
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
 } 

@@ -1,0 +1,26 @@
+all:
+  children:
+    ubuntu_servers:
+      hosts:
+        ubuntu1:
+          ansible_host: 10.0.3.28
+          ansible_user: ubuntu
+        ubuntu2:
+          ansible_host: 10.0.3.35
+          ansible_user: ubuntu
+        ubuntu3:
+          ansible_host: 10.0.3.252
+          ansible_user: ubuntu
+    amazon_servers:
+      hosts:
+        amazon1:
+          ansible_host: 10.0.3.191
+          ansible_user: ec2-user
+        amazon2:
+          ansible_host: 10.0.3.197
+          ansible_user: ec2-user
+        amazon3:
+          ansible_host: 10.0.3.66
+          ansible_user: ec2-user
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/midterm-key.pem
